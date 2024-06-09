@@ -501,13 +501,9 @@ require('lazy').setup({
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
-        -- Some languages (like typescript) have entire language plugins that can be useful:
-        --    https://github.com/pmizio/typescript-tools.nvim
-        --
-        -- But for many setups, the LSP (`tsserver`) will work just fine
-        --        tsserver = {},
-        --
-
+        tsserver = {},
+        -- Make sure errors don't disappear when entering insert mode
+        vim.diagnostic.config { update_in_insert = true },
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -852,11 +848,6 @@ require('lazy').setup({
     },
   },
 })
-vim.diagnostic.config {
-  --  virtual_text = true,
-  --  signs = true,
-  update_in_insert = true,
-}
 vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline = true })
 vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = 'none' })
 vim.keymap.set('n', '<leader>gc', function()
