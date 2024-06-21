@@ -107,7 +107,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc>', '<C-\\><C-N>:buffer #<CR>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<leader>cs', ':colorscheme solarized <bar> :set background=light<CR>', { desc = '[C]olorscheme [S]oloarized' })
 vim.keymap.set('n', '<leader>cc', ':Telescope colorscheme<CR>', { desc = '[C]olorscheme [C]hooser' })
 
 -- Keybinds to make split navigation easier.
@@ -638,33 +637,6 @@ require('lazy').setup({
       }
     end,
   },
-  {
-    'maxmx03/solarized.nvim',
-    priority = 1000,
-    config = function()
-      vim.o.background = 'dark' -- or 'light'
-
-      vim.cmd.colorscheme 'solarized'
-    end,
-  },
-  {
-    'talha-akram/noctis.nvim',
-  },
-  {
-    'eldritch-theme/eldritch.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  {
-    'lunarvim/synthwave84.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'synthwave84'
-      require('synthwave84').setup { glow = { operator = true } }
-    end,
-  },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -775,7 +747,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -801,7 +773,6 @@ vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline = true })
 vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = 'none' })
 
 vim.cmd [[colorscheme synthwave84]]
-
 vim.keymap.set('n', '<leader>gc', function()
   require('treesitter-context').go_to_context(vim.v.count1)
 end, { silent = true, desc = 'Go to [C]ontext' })
