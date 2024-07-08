@@ -86,6 +86,11 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Spellcheck
+vim.o.spelllang = 'en_us'
+vim.o.spelloptions = 'camel'
+vim.keymap.set('n', '<leader>ts', ':set invspell<cr>', { desc = '[T]oggle [S]pellcheck' })
+
 -- [[ Basic Keymaps ]]
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
